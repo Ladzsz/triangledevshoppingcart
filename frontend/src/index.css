@@ -8,7 +8,9 @@
 }
 
 /* 2. Set html and body to take full height */
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
-  width: 100%;                    
+  width: 100%;
 }
