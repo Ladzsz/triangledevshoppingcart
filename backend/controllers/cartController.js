@@ -1,4 +1,4 @@
-//Must be swapped out with databse upon database implementation
+// Temporary in-memory cart store (replace with database queries)
 const cartItems = [{
   id: 1,
   userId: 1,
