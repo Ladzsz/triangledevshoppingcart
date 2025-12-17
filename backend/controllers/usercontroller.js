@@ -1,7 +1,7 @@
 import { registerUser, loginUser } from '../services/auth.service.js'
 import { signToken } from '../utils/jwt.js'
 
-// POST /auth/register
+// register user function
 export const register = async (req, res, next) => {
   try {
     const { email, password } = req.body
@@ -19,7 +19,7 @@ export const register = async (req, res, next) => {
   }
 }
 
-// POST /auth/login
+// login user function
 export const login = async (req, res, next) => {
   try {
     const { email, password } = req.body
@@ -37,7 +37,7 @@ export const login = async (req, res, next) => {
   }
 }
 
-// GET /me
+// GET user function
 export const me = async (req, res) => {
   res.json({
     success: true,
