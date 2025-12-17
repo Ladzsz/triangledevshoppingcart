@@ -16,4 +16,4 @@
 
 - user auth functionality is currently implemented using an in-memory data structure.
 - This is a temporary implementation for development and testing purposes.
-- Cart persistence will be migrated to a database once the DBMS is finalized.
+- User persistence will be migrated to a database once the DBMS is finalized.
