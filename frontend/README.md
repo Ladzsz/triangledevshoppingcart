@@ -71,3 +71,9 @@ export default defineConfig([
   },
 ]);
 ```
+
+## **Author:** Ladzsz
+
+## **Date:** 12/18/2025
+
+- created search bar component alongside basic header.
