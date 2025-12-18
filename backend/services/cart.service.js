@@ -3,14 +3,14 @@ let cartItems = []
 let nextId = 1
 
 //grab users cart function
-export const getCartByUser = userId => {
-  return cartItems.filter(item => item.userId === userId)
+export const getCartByUser = (userId) => {
+  return cartItems.filter((item) => item.userId === userId)
 }
 
 //add to users cart function
 export const addToCart = (userId, productId, quantity) => {
   const existingItem = cartItems.find(
-    item => item.userId === userId && item.productId === productId
+    (item) => item.userId === userId && item.productId === productId
   )
 
   if (existingItem) {
@@ -22,7 +22,7 @@ export const addToCart = (userId, productId, quantity) => {
     id: nextId++,
     userId,
     productId,
-    quantity
+    quantity,
   }
 
   cartItems.push(newItem)
@@ -31,9 +31,7 @@ export const addToCart = (userId, productId, quantity) => {
 
 //update users cart function
 export const updateCartItem = (userId, itemId, quantity) => {
-  const item = cartItems.find(
-    i => i.id === itemId && i.userId === userId
-  )
+  const item = cartItems.find((i) => i.id === itemId && i.userId === userId)
 
   if (!item) {
     throw new Error('Cart item not found')
@@ -46,7 +44,7 @@ export const updateCartItem = (userId, itemId, quantity) => {
 //remove users cart item function
 export const removeCartItem = (userId, itemId) => {
   const index = cartItems.findIndex(
-    i => i.id === itemId && i.userId === userId
+    (i) => i.id === itemId && i.userId === userId
   )
 
   if (index === -1) {
@@ -57,6 +55,6 @@ export const removeCartItem = (userId, itemId) => {
 }
 
 //clear users cart function
-export const clearCartByUser = userId => {
-  cartItems = cartItems.filter(item => item.userId !== userId)
+export const clearCartByUser = (userId) => {
+  cartItems = cartItems.filter((item) => item.userId !== userId)
 }

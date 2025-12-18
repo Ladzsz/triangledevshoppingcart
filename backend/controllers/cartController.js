@@ -12,11 +12,7 @@ export const addItemToCart = (req, res) => {
     return res.status(400).json({ error: 'Missing fields' })
   }
 
-  const item = cartService.addToCart(
-    req.user.id,
-    productId,
-    quantity
-  )
+  const item = cartService.addToCart(req.user.id, productId, quantity)
 
   res.status(201).json({ success: true, item })
 }
@@ -26,11 +22,7 @@ export const updateCartItem = (req, res) => {
   const itemId = Number(req.params.id)
 
   try {
-    const item = cartService.updateCartItem(
-      req.user.id,
-      itemId,
-      quantity
-    )
+    const item = cartService.updateCartItem(req.user.id, itemId, quantity)
     res.json({ success: true, item })
   } catch (err) {
     res.status(404).json({ error: err.message })
@@ -41,10 +33,7 @@ export const removeCartItem = (req, res) => {
   const itemId = Number(req.params.id)
 
   try {
-    const item = cartService.removeCartItem(
-      req.user.id,
-      itemId
-    )
+    const item = cartService.removeCartItem(req.user.id, itemId)
     res.json({ success: true, item })
   } catch (err) {
     res.status(404).json({ error: err.message })
