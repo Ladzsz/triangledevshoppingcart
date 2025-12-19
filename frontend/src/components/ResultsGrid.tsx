@@ -1,6 +1,7 @@
 import EmptyState from "../pages/searchPage";
 
 type Product = {
+  images: string[];
   id: number;
   name: string;
   description: string;
@@ -20,6 +21,7 @@ export default function ResultsGrid({ products }: ResultsGridProps) {
       <ul className="results-grid">
         {products.map((product) => (
           <li key={product.id} className="results-card">
+            <img src={product.images?.[0]} alt={product.name} loading="lazy" />
             <h3>{product.name}</h3>
             <p>{product.description}</p>
           </li>

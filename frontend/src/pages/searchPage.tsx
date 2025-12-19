@@ -5,8 +5,9 @@ import FiltersPanel from "../components/FiltersPanel";
 import ResultsGrid from "../components/ResultsGrid";
 import Pagination from "../components/Pagination";
 import { tokenize } from "../utils/SearchHelper";
+import "../assets/styles/searchPage.css";
 
-const PAGE_SIZE = 20;
+const PAGE_SIZE = 10;
 
 //function to display no results
 export function EmptyState({ query }: { query?: string }) {
@@ -82,11 +83,8 @@ export default function SearchPage() {
       </div>
 
       {hasResults && totalPages > 1 && (
-  <Pagination
-    page={page}
-    totalPages={totalPages}
-    onChange={goToPage}
-  />)}
+        <Pagination page={page} totalPages={totalPages} onChange={goToPage} />
+      )}
     </main>
   );
 }
