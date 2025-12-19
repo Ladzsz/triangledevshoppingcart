@@ -3,9 +3,7 @@ export default function FiltersPanel() {
     <aside className="srp-filters">
       <h2>Filters</h2>
 
-      <p style={{ opacity: 0.6 }}>
-        Filters will be rendered from filters.json
-      </p>
+      <p style={{ opacity: 0.6 }}>Filters will be rendered from filters.json</p>
     </aside>
   );
 }

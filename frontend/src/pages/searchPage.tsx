@@ -33,20 +33,20 @@ export function searchProducts(products: any[], query: string) {
       [
         product.name,
         product.description,
+        product.categoryId,
+        product.brandId,
+        product.gender,
         ...(product.keywords ?? []),
-        ...(product.tags ?? [])
+        ...(product.tags ?? []),
       ].join(" ")
     );
 
-    return queryTokens.every((token) =>
-      haystackTokens.some((h) => h.includes(token))
-    );
+    return queryTokens.some((token) => haystackTokens.includes(token));
   });
 }
 
-
 //function to render the search page
-  export default function SearchPage() {
+export default function SearchPage() {
   const [params] = useSearchParams();
   const query = params.get("q") ?? "";
 
