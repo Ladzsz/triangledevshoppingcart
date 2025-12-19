@@ -77,3 +77,12 @@ export default defineConfig([
 ## **Date:** 12/18/2025
 
 - created search bar component alongside basic header.
+
+## **Author:** Ladzsz
+
+## **Date:** 12/19/2025
+
+- Set up Vitest testing infrastructure
+- Created the SearchPage (unstyled)
+- Implemented working search functionality (tokenization, plural handling, category indexing)
+- Verified search behavior with unit tests
