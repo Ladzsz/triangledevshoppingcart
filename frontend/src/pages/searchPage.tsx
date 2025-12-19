@@ -4,6 +4,7 @@ import SearchSummary from "../components/SearchSummary";
 import FiltersPanel from "../components/FiltersPanel";
 import ResultsGrid from "../components/ResultsGrid";
 import Pagination from "../components/Pagination";
+import { tokenize } from "../utils/SearchHelper";
 
 //function to display no results
 export function EmptyState({ query }: { query?: string }) {
@@ -19,30 +20,6 @@ export function EmptyState({ query }: { query?: string }) {
       )}
     </section>
   );
-}
-
-//helper function to Normalizes text for search comparison.
-function normalize(text: string) {
-  return text
-    .toLowerCase()
-    .replace(/[^a-z0-9\s]/g, "")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-//helper function to Converts simple English plurals to their singular form.
-function singularize(word: string) {
-  if (word.endsWith("ies")) return word.slice(0, -3) + "y";
-  if (word.endsWith("ses")) return word.slice(0, -2);
-  if (word.endsWith("s") && word.length > 3) return word.slice(0, -1);
-  return word;
-}
-
-//function to Tokenize text into normalized, singularized search terms.
-function tokenize(text: string) {
-  return normalize(text)
-    .split(" ")
-    .map(singularize);
 }
 
 //function to return search results
