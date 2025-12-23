@@ -1,7 +1,3 @@
 export default function FiltersPanel() {
-  return (
-    <aside className="srp-filters">
-
-    </aside>
-  );
+  return <aside className="srp-filters"></aside>;
 }

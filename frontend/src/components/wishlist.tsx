@@ -1,7 +1,7 @@
-import type { Product } from '../types/Product';
-import { useWishlist } from 'react-use-wishlist';
-import Favorite from '@mui/icons-material/Favorite';
-import FavoriteBorderOutlined from '@mui/icons-material/FavoriteBorderOutlined';
+import type { Product } from "../types/Product";
+import { useWishlist } from "react-use-wishlist";
+import Favorite from "@mui/icons-material/Favorite";
+import FavoriteBorderOutlined from "@mui/icons-material/FavoriteBorderOutlined";
 
 type Props = {
   product: Product;
@@ -18,7 +18,7 @@ const LibraryWishlistButton = ({ product }: Props) => {
     } else {
       addWishlistItem({
         ...product,
-        id: productId, 
+        id: productId,
       });
     }
   };
@@ -33,6 +33,5 @@ const LibraryWishlistButton = ({ product }: Props) => {
     </button>
   );
 };
-
 
 export default LibraryWishlistButton;

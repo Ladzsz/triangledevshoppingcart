@@ -1,7 +1,7 @@
 import EmptyState from "../pages/searchPage";
-import StarRating from "../components/starRating"
-import type { Product } from '../types/Product'
-import LibraryWishlistButton from './wishlist'
+import StarRating from "../components/starRating";
+import type { Product } from "../types/Product";
+import LibraryWishlistButton from "./wishlist";
 
 type ResultsGridProps = {
   products: Product[];
@@ -19,10 +19,17 @@ export default function ResultsGrid({ products }: ResultsGridProps) {
           <li key={product.id} className="results-card">
             <img src={product.images?.[0]} alt={product.name} loading="lazy" />
             <h3>{product.name}</h3>
-              <p>${product.price}</p>
-              <p>{product.description}</p>
-             <span><StarRating rating={product.rating} reviewCount={product.reviewCount}/></span>
-            <p style={{fontSize: 8}}>Wishlist {<LibraryWishlistButton product={product} />}</p>
+            <p>${product.price}</p>
+            <p>{product.description}</p>
+            <span>
+              <StarRating
+                rating={product.rating}
+                reviewCount={product.reviewCount}
+              />
+            </span>
+            <p style={{ fontSize: 8 }}>
+              Wishlist {<LibraryWishlistButton product={product} />}
+            </p>
           </li>
         ))}
       </ul>
