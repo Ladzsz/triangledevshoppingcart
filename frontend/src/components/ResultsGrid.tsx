@@ -2,6 +2,7 @@ import EmptyState from "../pages/searchPage";
 import StarRating from "../components/starRating";
 import type { Product } from "../types/Product";
 import LibraryWishlistButton from "./wishlist";
+import "../assets/styles/results.css"
 
 type ResultsGridProps = {
   products: Product[];
