@@ -1,0 +1,44 @@
+.price-range {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.price-range input {
+  width: 100%;
+}
+
+.size-btn {
+  border: 1px solid #ccc;
+  background: #fff;
+  color: #333;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.size-btn.active {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+
+.size-btn:hover {
+  border-color: #111;
+}
+
+
+.color-swatches {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.color-swatch {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+}
+
+.color-swatch.black { background: black; }
+.color-swatch.white { background: white; }
+.color-swatch.red { background: red; }
