@@ -86,3 +86,11 @@ export default defineConfig([
 - Created the SearchPage (unstyled)
 - Implemented working search functionality (tokenization, plural handling, category indexing)
 - Verified search behavior with unit tests
+
+## **Author:** Ladzsz
+
+## **Date:** 12/19/2025
+
+- created and added minor styling to the dropdown menu
+- Created the funcitonality for the filters component
+- (next step organize code so its more consice and not cluttered, and style the filter)
