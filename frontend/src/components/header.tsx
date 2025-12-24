@@ -20,8 +20,11 @@ export default function Header({ sortOption, onSortChange }: HeaderProps) {
         </nav>
       </div>
 
-      <div className="header-right">
+      <div className="header-middle">
         <SearchBar />
+      </div>
+
+      <div className="header-right">
 
         <select
           value={sortOption}

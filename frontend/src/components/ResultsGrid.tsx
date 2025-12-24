@@ -10,7 +10,7 @@ type ResultsGridProps = {
 
 export default function ResultsGrid({ products }: ResultsGridProps) {
   if (products.length === 0) {
-    return <EmptyState />;
+    return <EmptyState sortOption={""} />;
   }
 
   return (
