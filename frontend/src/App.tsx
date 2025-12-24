@@ -4,10 +4,16 @@ import Header from "./components/header.tsx";
 import SearchPage from "./pages/searchPage.tsx";
 
 function App() {
+  const [sortOption, setSortOption] = useState("relevance");
+
   return (
     <>
-      <Header />
-      <SearchPage />
+      <Header
+        sortOption={sortOption}
+        onSortChange={setSortOption}
+      />
+
+      <SearchPage sortOption={sortOption} />
     </>
   );
 }

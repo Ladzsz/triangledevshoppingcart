@@ -5,7 +5,12 @@ import FiltersPanel from "../components/FiltersPanel";
 import ResultsGrid from "../components/ResultsGrid";
 import Pagination from "../components/Pagination";
 import { tokenize } from "../utils/SearchHelper";
+import { sortProducts } from "../utils/dropdownhelper";
 import "../assets/styles/searchPage.css";
+
+type SearchPageProps = {
+  sortOption: string;
+};
 
 const PAGE_SIZE = 10;
 
@@ -49,17 +54,19 @@ export function searchProducts(products: any[], query: string) {
 }
 
 //function to render the search page
-export default function SearchPage() {
+export default function SearchPage({ sortOption }: SearchPageProps) {
   const [params, setParams] = useSearchParams();
   const query = params.get("q") ?? "";
   const page = Number(params.get("page") ?? "1");
 
-  const results = searchProducts(products.products, query);
-  const hasResults = results.length > 0;
+  const searchedResults = searchProducts(products.products, query);
+  const sortedResults = sortProducts(searchedResults, sortOption);
 
-  const totalPages = Math.ceil(results.length / PAGE_SIZE);
+  const hasResults = sortedResults.length > 0;
+  const totalPages = Math.ceil(sortedResults.length / PAGE_SIZE);
+
   const start = (page - 1) * PAGE_SIZE;
-  const paginatedResults = results.slice(start, start + PAGE_SIZE);
+  const paginatedResults = sortedResults.slice(start, start + PAGE_SIZE);
 
   function goToPage(newPage: number) {
     const next = new URLSearchParams(params);
@@ -70,7 +77,7 @@ export default function SearchPage() {
 
   return (
     <main className="srp">
-      <SearchSummary query={query} count={results.length} />
+      <SearchSummary query={query} count={sortedResults.length} />
 
       <div className="srp__content">
         <FiltersPanel />

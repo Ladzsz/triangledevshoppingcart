@@ -2,7 +2,12 @@ import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar.tsx";
 import "../assets/styles/headerstyles.css";
 
-export default function Header() {
+type HeaderProps = {
+  sortOption: string;
+  onSortChange: (value: string) => void;
+};
+
+export default function Header({ sortOption, onSortChange }: HeaderProps) {
   return (
     <header className={`site-header`}>
       <div className="header-left">
@@ -17,6 +22,16 @@ export default function Header() {
 
       <div className="header-right">
         <SearchBar />
+
+        <select
+          value={sortOption}
+          onChange={(e) => onSortChange(e.target.value)}
+        >
+          <option value="relevance">Relevance</option>
+          <option value="priceLow">Price: Low–High</option>
+          <option value="rating">Rating</option>
+          <option value="newest">Newest</option>
+        </select>
       </div>
     </header>
   );
