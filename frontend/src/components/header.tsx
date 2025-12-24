@@ -25,7 +25,6 @@ export default function Header({ sortOption, onSortChange }: HeaderProps) {
       </div>
 
       <div className="header-right">
-
         <select
           value={sortOption}
           onChange={(e) => onSortChange(e.target.value)}

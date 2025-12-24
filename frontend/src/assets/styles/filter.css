@@ -26,7 +26,6 @@
   border-color: #111;
 }
 
-
 .color-swatches {
   display: flex;
   gap: 0.5rem;
@@ -39,6 +38,12 @@
   border: 1px solid #ccc;
 }
 
-.color-swatch.black { background: black; }
-.color-swatch.white { background: white; }
-.color-swatch.red { background: red; }
+.color-swatch.black {
+  background: black;
+}
+.color-swatch.white {
+  background: white;
+}
+.color-swatch.red {
+  background: red;
+}

@@ -21,7 +21,8 @@
 }
 
 .header-left,
-.header-middle, .header-right {
+.header-middle,
+.header-right {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -30,7 +31,7 @@
 
 .header-middle {
   margin-left: auto;
-  margin-right: 1rem; 
+  margin-right: 1rem;
 }
 
 @media (max-width: 768px) {

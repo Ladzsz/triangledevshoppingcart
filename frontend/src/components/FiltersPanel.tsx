@@ -5,7 +5,7 @@ import {
   getAvailableColors,
   getRatingSteps,
 } from "../utils/filterOptions";
-import "../assets/styles/filter.css" 
+import "../assets/styles/filter.css";
 
 type FiltersPanelProps = {
   /* BRAND */
@@ -52,7 +52,6 @@ export default function FiltersPanel({
   onRatingChange,
 
   products,
-  
 }: FiltersPanelProps) {
   const priceBounds = getPriceBounds(products);
   const sizes = getAvailableSizes(products);
@@ -61,25 +60,23 @@ export default function FiltersPanel({
 
   return (
     <aside className="srp-filters">
-
       {/* PRICE */}
       <section className="filter-group">
         <h4>Price</h4>
         <div className="price-range">
           <input
-  type="number"
-  placeholder={`Min (${priceBounds.min})`}
-  value={price.min ?? ""}
-  onChange={(e) => onPriceChange("min", e.target.value)}
-/>
+            type="number"
+            placeholder={`Min (${priceBounds.min})`}
+            value={price.min ?? ""}
+            onChange={(e) => onPriceChange("min", e.target.value)}
+          />
 
-<input
-  type="number"
-  placeholder={`Max (${priceBounds.max})`}
-  value={price.max ?? ""}
-  onChange={(e) => onPriceChange("max", e.target.value)}
-/>
-
+          <input
+            type="number"
+            placeholder={`Max (${priceBounds.max})`}
+            value={price.max ?? ""}
+            onChange={(e) => onPriceChange("max", e.target.value)}
+          />
         </div>
       </section>
 
@@ -104,12 +101,12 @@ export default function FiltersPanel({
         <div className="size-grid">
           {sizes.map((size) => (
             <button
-            key={size}
-            className={`size-btn ${selectedSizes.includes(size) ? "active" : ""}`}
-            onClick={() => onSizeToggle(size)}
-          >
-            {size}
-          </button>
+              key={size}
+              className={`size-btn ${selectedSizes.includes(size) ? "active" : ""}`}
+              onClick={() => onSizeToggle(size)}
+            >
+              {size}
+            </button>
           ))}
         </div>
       </section>
@@ -118,50 +115,50 @@ export default function FiltersPanel({
       <section className="filter-group">
         <h4>Color</h4>
         <div className="color-swatches">
-    {colors.map((color) => {
-      const isActive = selectedColors.includes(color);
+          {colors.map((color) => {
+            const isActive = selectedColors.includes(color);
 
-      return (
-        <button
-          key={color}
-          type="button"
-          className={`color-swatch ${isActive ? "active" : ""}`}
-          title={color}
-          style={{ backgroundColor: color.toLowerCase() }}
-          onClick={() => onColorToggle(color)}
-        />
-      );
-    })}
-  </div>
+            return (
+              <button
+                key={color}
+                type="button"
+                className={`color-swatch ${isActive ? "active" : ""}`}
+                title={color}
+                style={{ backgroundColor: color.toLowerCase() }}
+                onClick={() => onColorToggle(color)}
+              />
+            );
+          })}
+        </div>
       </section>
 
       {/* RATING */}
       <section className="filter-group">
         <h4>Rating</h4>
         {ratings.map((rating) => (
-    <label key={rating}>
-      <input
-        type="radio"
-        name="rating"
-        checked={selectedRating === rating}
-        onChange={() => onRatingChange(rating)}
-      />
-      {"★".repeat(rating)}{"☆".repeat(5 - rating)} & up
-    </label>
-  ))}
+          <label key={rating}>
+            <input
+              type="radio"
+              name="rating"
+              checked={selectedRating === rating}
+              onChange={() => onRatingChange(rating)}
+            />
+            {"★".repeat(rating)}
+            {"☆".repeat(5 - rating)} & up
+          </label>
+        ))}
 
-  {/* Optional clear */}
-  <label>
-    <input
-      type="radio"
-      name="rating"
-      checked={selectedRating === null}
-      onChange={() => onRatingChange(null)}
-    />
-    Any rating
-  </label>
+        {/* Optional clear */}
+        <label>
+          <input
+            type="radio"
+            name="rating"
+            checked={selectedRating === null}
+            onChange={() => onRatingChange(null)}
+          />
+          Any rating
+        </label>
       </section>
-
     </aside>
   );
 }

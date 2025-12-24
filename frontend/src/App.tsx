@@ -8,10 +8,7 @@ function App() {
 
   return (
     <>
-      <Header
-        sortOption={sortOption}
-        onSortChange={setSortOption}
-      />
+      <Header sortOption={sortOption} onSortChange={setSortOption} />
 
       <SearchPage sortOption={sortOption} />
     </>

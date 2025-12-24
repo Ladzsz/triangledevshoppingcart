@@ -23,9 +23,7 @@ describe("productFilters", () => {
 
   test("filters by max price", () => {
     const result = filterByPrice(data, null, 200);
-    expect(
-  result.every((p) => (p.salePrice ?? p.price) <= 200)
-).toBe(true);
+    expect(result.every((p) => (p.salePrice ?? p.price) <= 200)).toBe(true);
   });
 
   test("filters by rating", () => {

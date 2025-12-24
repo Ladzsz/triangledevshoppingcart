@@ -14,8 +14,7 @@ import {
   filterBySizes,
   filterByColors,
   filterByRating,
-} from "../utils/productFilters"
-
+} from "../utils/productFilters";
 
 type SearchPageProps = {
   sortOption: string;
@@ -65,7 +64,10 @@ export function searchProducts(products: any[], query: string) {
 //function to render the search page
 export default function SearchPage({ sortOption }: SearchPageProps) {
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
-  const [price, setPrice] = useState<{ min: number | null; max: number | null }>({
+  const [price, setPrice] = useState<{
+    min: number | null;
+    max: number | null;
+  }>({
     min: null,
     max: null,
   });
@@ -86,20 +88,20 @@ export default function SearchPage({ sortOption }: SearchPageProps) {
 
   results = sortProducts(results, sortOption);
 
-    const hasResults = results.length > 0;
-    const totalPages = Math.ceil(results.length / PAGE_SIZE);
+  const hasResults = results.length > 0;
+  const totalPages = Math.ceil(results.length / PAGE_SIZE);
 
-    const start = (page - 1) * PAGE_SIZE;
-    const paginatedResults = results.slice(start, start + PAGE_SIZE);
+  const start = (page - 1) * PAGE_SIZE;
+  const paginatedResults = results.slice(start, start + PAGE_SIZE);
 
-    function goToPage(newPage: number) {
-      const next = new URLSearchParams(params);
-      next.set("page", String(newPage));
-      setParams(next);
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
+  function goToPage(newPage: number) {
+    const next = new URLSearchParams(params);
+    next.set("page", String(newPage));
+    setParams(next);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
 
-    function handleBrandChange(brandId: string) {
+  function handleBrandChange(brandId: string) {
     setSelectedBrands((prev) =>
       prev.includes(brandId)
         ? prev.filter((id) => id !== brandId)
@@ -118,18 +120,14 @@ export default function SearchPage({ sortOption }: SearchPageProps) {
 
   function handleSizeToggle(size: string) {
     setSelectedSizes((prev) =>
-      prev.includes(size)
-        ? prev.filter((s) => s !== size)
-        : [...prev, size]
+      prev.includes(size) ? prev.filter((s) => s !== size) : [...prev, size]
     );
     resetPage();
   }
 
   function handleColorToggle(color: string) {
     setSelectedColors((prev) =>
-      prev.includes(color)
-        ? prev.filter((c) => c !== color)
-        : [...prev, color]
+      prev.includes(color) ? prev.filter((c) => c !== color) : [...prev, color]
     );
     resetPage();
   }
@@ -148,20 +146,16 @@ export default function SearchPage({ sortOption }: SearchPageProps) {
         <FiltersPanel
           selectedBrands={selectedBrands}
           onBrandChange={handleBrandChange}
-
           price={price}
           onPriceChange={handlePriceChange}
-
           selectedSizes={selectedSizes}
           onSizeToggle={handleSizeToggle}
-
           selectedColors={selectedColors}
           onColorToggle={handleColorToggle}
-
           selectedRating={selectedRating}
           onRatingChange={setSelectedRating}
-
-          products={products.products}/>
+          products={products.products}
+        />
 
         {hasResults ? (
           <ResultsGrid products={paginatedResults} />
