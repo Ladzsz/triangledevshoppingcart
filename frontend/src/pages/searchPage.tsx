@@ -9,6 +9,7 @@ import { sortProducts } from "../utils/dropdownhelper";
 import "../assets/styles/searchPage.css";
 import { useState } from "react";
 import { createFilterHandlers } from "../utils/filterHelpers";
+import { FilterToggleButton } from "../components/filterBtn";
 import {
   filterByBrands,
   filterByPrice,
@@ -66,6 +67,7 @@ export function searchProducts(products: any[], query: string) {
 //function to render the search page
 export default function SearchPage({ sortOption }: SearchPageProps) {
   {/*setting states*/}
+  const [filtersOpen, setFiltersOpen] = useState(false);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
   const [selectedColors, setSelectedColors] = useState<string[]>([]);
@@ -116,6 +118,11 @@ export default function SearchPage({ sortOption }: SearchPageProps) {
     <main className="srp">
       <SearchSummary query={query} count={results.length} />
 
+      <FilterToggleButton
+        isOpen={filtersOpen}
+        onToggle={() => setFiltersOpen((prev) => !prev)}
+      />
+
       <div className="srp__content">
         <FiltersPanel
           selectedBrands={selectedBrands}
@@ -128,8 +135,9 @@ export default function SearchPage({ sortOption }: SearchPageProps) {
           onColorToggle={handleColorToggle}
           selectedRating={selectedRating}
           onRatingChange={setSelectedRating}
-          products={products.products}
-        />
+          products={products.products} 
+          isOpen={filtersOpen}       
+           />
 
         {hasResults ? (
           <ResultsGrid products={paginatedResults} />

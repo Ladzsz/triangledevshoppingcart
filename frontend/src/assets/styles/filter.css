@@ -1,3 +1,11 @@
+.srp-filters {
+    display: none;
+}
+
+.srp-filters.open {
+  display: block;
+}
+
 .price-range {
   display: flex;
   gap: 0.5rem;
@@ -29,6 +37,7 @@
 .color-swatches {
   display: flex;
   gap: 0.5rem;
+  background-color: black;
 }
 
 .color-swatch {
@@ -36,14 +45,15 @@
   height: 24px;
   border-radius: 50%;
   border: 1px solid #ccc;
+  opacity: 1; 
+  transition: opacity 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
 }
 
-.color-swatch.black {
-  background: black;
+.color-swatch.active {
+  opacity: 0.5;
 }
-.color-swatch.white {
-  background: white;
-}
-.color-swatch.red {
-  background: red;
+
+.color-swatch:active {
+  transform: scale(0.95);
 }
