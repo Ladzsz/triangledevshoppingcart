@@ -8,6 +8,7 @@ import { tokenize } from "../utils/SearchHelper";
 import { sortProducts } from "../utils/dropdownhelper";
 import "../assets/styles/searchPage.css";
 import { useState } from "react";
+import { createFilterHandlers } from "../utils/filterHelpers";
 import {
   filterByBrands,
   filterByPrice,
@@ -15,6 +16,7 @@ import {
   filterByColors,
   filterByRating,
 } from "../utils/productFilters";
+
 
 type SearchPageProps = {
   sortOption: string;
@@ -63,7 +65,14 @@ export function searchProducts(products: any[], query: string) {
 
 //function to render the search page
 export default function SearchPage({ sortOption }: SearchPageProps) {
+  {/*setting states*/}
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
+  const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
+  const [selectedColors, setSelectedColors] = useState<string[]>([]);
+  const [selectedRating, setSelectedRating] = useState<number | null>(null);
+  const [params, setParams] = useSearchParams();
+  const query = params.get("q") ?? "";
+  const page = Number(params.get("page") ?? "1");
   const [price, setPrice] = useState<{
     min: number | null;
     max: number | null;
@@ -71,72 +80,37 @@ export default function SearchPage({ sortOption }: SearchPageProps) {
     min: null,
     max: null,
   });
-  const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
-  const [selectedColors, setSelectedColors] = useState<string[]>([]);
-  const [selectedRating, setSelectedRating] = useState<number | null>(null);
-  const [params, setParams] = useSearchParams();
-  const query = params.get("q") ?? "";
-  const page = Number(params.get("page") ?? "1");
 
+  {/*setting results*/}
   let results = searchProducts(products.products, query);
-
   results = filterByBrands(results, selectedBrands);
   results = filterByPrice(results, price.min, price.max);
   results = filterBySizes(results, selectedSizes);
   results = filterByColors(results, selectedColors);
   results = filterByRating(results, selectedRating);
-
   results = sortProducts(results, sortOption);
 
   const hasResults = results.length > 0;
   const totalPages = Math.ceil(results.length / PAGE_SIZE);
-
   const start = (page - 1) * PAGE_SIZE;
   const paginatedResults = results.slice(start, start + PAGE_SIZE);
 
-  function goToPage(newPage: number) {
-    const next = new URLSearchParams(params);
-    next.set("page", String(newPage));
-    setParams(next);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-
-  function handleBrandChange(brandId: string) {
-    setSelectedBrands((prev) =>
-      prev.includes(brandId)
-        ? prev.filter((id) => id !== brandId)
-        : [...prev, brandId]
-    );
-    resetPage();
-  }
-
-  function handlePriceChange(type: "min" | "max", value: string) {
-    setPrice((prev) => ({
-      ...prev,
-      [type]: value === "" ? null : Number(value),
-    }));
-    resetPage();
-  }
-
-  function handleSizeToggle(size: string) {
-    setSelectedSizes((prev) =>
-      prev.includes(size) ? prev.filter((s) => s !== size) : [...prev, size]
-    );
-    resetPage();
-  }
-
-  function handleColorToggle(color: string) {
-    setSelectedColors((prev) =>
-      prev.includes(color) ? prev.filter((c) => c !== color) : [...prev, color]
-    );
-    resetPage();
-  }
-
-  function resetPage() {
-    const next = new URLSearchParams(params);
-    next.set("page", "1");
-    setParams(next);
-  }
+  {/*passing state updater through helpers*/}
+  const {
+    goToPage,
+    handleBrandChange,
+    handlePriceChange,
+    handleSizeToggle,
+    handleColorToggle,
+  } = createFilterHandlers({
+    params,
+    setParams,
+    setSelectedBrands,
+    setSelectedSizes,
+    setSelectedColors,
+    setPrice,
+  });
+  
 
   return (
     <main className="srp">
