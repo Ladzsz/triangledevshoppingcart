@@ -89,8 +89,16 @@ export default defineConfig([
 
 ## **Author:** Ladzsz
 
-## **Date:** 12/19/2025
+## **Date:** 12/24/2025
 
 - created and added minor styling to the dropdown menu
 - Created the funcitonality for the filters component
 - (next step organize code so its more consice and not cluttered, and style the filter)
+
+## **Author:** Ladzsz
+
+## **Date:** 12/25/2025
+
+- organized the code for the filter logic
+- styled the filter so its more accesible
+- (next step make the filter appear sticky left, and then appear as a model on mobile)
