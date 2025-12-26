@@ -116,14 +116,17 @@ export default function SearchPage({ sortOption }: SearchPageProps) {
 
   return (
     <main className="srp">
-      <SearchSummary query={query} count={results.length} />
+      <div className="sr-top">
+        <SearchSummary query={query} count={results.length} />
 
-      <FilterToggleButton
-        isOpen={filtersOpen}
-        onToggle={() => setFiltersOpen((prev) => !prev)}
-      />
+        <FilterToggleButton
+          isOpen={filtersOpen}
+          onToggle={() => setFiltersOpen((prev) => !prev)}
+        />
+      </div>
+      
 
-      <div className="srp__content">
+      <div className={`srp__content ${filtersOpen ? "with-filters" : ""}`}>
         <FiltersPanel
           selectedBrands={selectedBrands}
           onBrandChange={handleBrandChange}
@@ -136,7 +139,8 @@ export default function SearchPage({ sortOption }: SearchPageProps) {
           selectedRating={selectedRating}
           onRatingChange={setSelectedRating}
           products={products.products} 
-          isOpen={filtersOpen}       
+          isOpen={filtersOpen}  
+          onClose={() => setFiltersOpen(false)}     
            />
 
         {hasResults ? (

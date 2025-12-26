@@ -5,7 +5,7 @@ type Props = {
 
 export function FilterToggleButton({ onToggle }: Props) {
   return (
-    <button onClick={onToggle}>
+    <button className="toggleFilterBtn" onClick={onToggle}>
       Filters
     </button>
   );
