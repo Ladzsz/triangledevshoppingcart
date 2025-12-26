@@ -60,9 +60,7 @@ export function createFilterHandlers({
 
   function handleColorToggle(color: string) {
     setSelectedColors((prev) =>
-      prev.includes(color)
-        ? prev.filter((c) => c !== color)
-        : [...prev, color]
+      prev.includes(color) ? prev.filter((c) => c !== color) : [...prev, color]
     );
     resetPage();
   }

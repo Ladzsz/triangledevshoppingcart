@@ -34,7 +34,7 @@ type FiltersPanelProps = {
   /* DATA */
   products: any[];
 
-  /* TogglePanel */ 
+  /* TogglePanel */
   isOpen: boolean;
   onClose: () => void;
 };
@@ -59,22 +59,20 @@ export default function FiltersPanel({
 
   isOpen,
   onClose,
-  
 }: FiltersPanelProps) {
   const priceBounds = getPriceBounds(products);
   const sizes = getAvailableSizes(products);
   const colors = getAvailableColors(products);
   const ratings = getRatingSteps();
-  
 
   return (
     <aside className={`srp-filters ${isOpen ? "open" : ""}`}>
       <div className="filter-top">
-          <h2>Filters</h2>
+        <h2>Filters</h2>
 
-          <button onClick={onClose}>X</button>
+        <button onClick={onClose}>X</button>
       </div>
-      
+
       {/* PRICE */}
       <section className="filter-group">
         <h4>Price</h4>

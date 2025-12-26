@@ -18,7 +18,6 @@ import {
   filterByRating,
 } from "../utils/productFilters";
 
-
 type SearchPageProps = {
   sortOption: string;
 };
@@ -66,7 +65,9 @@ export function searchProducts(products: any[], query: string) {
 
 //function to render the search page
 export default function SearchPage({ sortOption }: SearchPageProps) {
-  {/*setting states*/}
+  {
+    /*setting states*/
+  }
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
@@ -83,7 +84,9 @@ export default function SearchPage({ sortOption }: SearchPageProps) {
     max: null,
   });
 
-  {/*setting results*/}
+  {
+    /*setting results*/
+  }
   let results = searchProducts(products.products, query);
   results = filterByBrands(results, selectedBrands);
   results = filterByPrice(results, price.min, price.max);
@@ -97,7 +100,9 @@ export default function SearchPage({ sortOption }: SearchPageProps) {
   const start = (page - 1) * PAGE_SIZE;
   const paginatedResults = results.slice(start, start + PAGE_SIZE);
 
-  {/*passing state updater through helpers*/}
+  {
+    /*passing state updater through helpers*/
+  }
   const {
     goToPage,
     handleBrandChange,
@@ -112,7 +117,6 @@ export default function SearchPage({ sortOption }: SearchPageProps) {
     setSelectedColors,
     setPrice,
   });
-  
 
   return (
     <main className="srp">
@@ -124,7 +128,6 @@ export default function SearchPage({ sortOption }: SearchPageProps) {
           onToggle={() => setFiltersOpen((prev) => !prev)}
         />
       </div>
-      
 
       <div className={`srp__content ${filtersOpen ? "with-filters" : ""}`}>
         <FiltersPanel
@@ -138,10 +141,10 @@ export default function SearchPage({ sortOption }: SearchPageProps) {
           onColorToggle={handleColorToggle}
           selectedRating={selectedRating}
           onRatingChange={setSelectedRating}
-          products={products.products} 
-          isOpen={filtersOpen}  
-          onClose={() => setFiltersOpen(false)}     
-           />
+          products={products.products}
+          isOpen={filtersOpen}
+          onClose={() => setFiltersOpen(false)}
+        />
 
         {hasResults ? (
           <ResultsGrid products={paginatedResults} />
