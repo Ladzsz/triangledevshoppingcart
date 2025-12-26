@@ -102,3 +102,11 @@ export default defineConfig([
 - organized the code for the filter logic
 - styled the filter so its more accesible
 - (next step make the filter appear sticky left, and then appear as a model on mobile)
+
+## **Author:** Ladzsz
+
+## **Date:** 12/26/2025
+
+- Made the filter page appear on left side bar
+- styled the filter it appears as modal for mobile
+- (next step add loading states)
