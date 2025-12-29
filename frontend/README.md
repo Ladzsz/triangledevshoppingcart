@@ -110,3 +110,11 @@ export default defineConfig([
 - Made the filter page appear on left side bar
 - styled the filter it appears as modal for mobile
 - (next step add loading states)
+
+## **Author:** Ladzsz
+
+## **Date:** 12/29/2025
+
+- Made the loading state for search page
+- added loading effects for the cards and filter
+- created a temporary use effect for simulating loading changes (must be switched to async function upon database creation)
