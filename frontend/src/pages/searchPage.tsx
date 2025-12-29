@@ -7,7 +7,7 @@ import Pagination from "../components/Pagination";
 import { tokenize } from "../utils/SearchHelper";
 import { sortProducts } from "../utils/dropdownhelper";
 import "../assets/styles/searchPage.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { createFilterHandlers } from "../utils/filterHelpers";
 import { FilterToggleButton } from "../components/filterBtn";
 import {
@@ -68,6 +68,7 @@ export default function SearchPage({ sortOption }: SearchPageProps) {
   {
     /*setting states*/
   }
+
   const [isloading, setisloading] = useState(false);
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
@@ -84,6 +85,27 @@ export default function SearchPage({ sortOption }: SearchPageProps) {
     min: null,
     max: null,
   });
+
+  // use effect to simulate the the loading changing.
+  useEffect(() => {
+  setisloading(true);
+
+  const id = setTimeout(() => {
+    setisloading(false);
+  }, 0);
+
+  return () => clearTimeout(id);
+}, [
+  query,
+  selectedBrands,
+  selectedSizes,
+  selectedColors,
+  selectedRating,
+  price.min,
+  price.max,
+  sortOption,
+  page,
+]);
 
   {
     /*setting results*/
