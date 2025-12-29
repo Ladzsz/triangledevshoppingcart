@@ -88,24 +88,24 @@ export default function SearchPage({ sortOption }: SearchPageProps) {
 
   // use effect to simulate the the loading changing.
   useEffect(() => {
-  setisloading(true);
+    setisloading(true);
 
-  const id = setTimeout(() => {
-    setisloading(false);
-  }, 0);
+    const id = setTimeout(() => {
+      setisloading(false);
+    }, 0);
 
-  return () => clearTimeout(id);
-}, [
-  query,
-  selectedBrands,
-  selectedSizes,
-  selectedColors,
-  selectedRating,
-  price.min,
-  price.max,
-  sortOption,
-  page,
-]);
+    return () => clearTimeout(id);
+  }, [
+    query,
+    selectedBrands,
+    selectedSizes,
+    selectedColors,
+    selectedRating,
+    price.min,
+    price.max,
+    sortOption,
+    page,
+  ]);
 
   {
     /*setting results*/

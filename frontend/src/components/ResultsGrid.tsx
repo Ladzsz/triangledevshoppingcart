@@ -3,7 +3,7 @@ import StarRating from "../components/starRating";
 import type { Product } from "../types/Product";
 import LibraryWishlistButton from "./wishlist";
 import "../assets/styles/results.css";
-import { Skeleton } from '@mui/material';
+import { Skeleton } from "@mui/material";
 
 type ResultsGridProps = {
   products: Product[];
@@ -23,7 +23,6 @@ function ResultsSkeletonCard() {
 }
 
 export default function ResultsGrid({ products, isloading }: ResultsGridProps) {
-  
   if (isloading) {
     return (
       <section className="srp-results">
