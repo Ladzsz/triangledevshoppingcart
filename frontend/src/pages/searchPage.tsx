@@ -68,6 +68,7 @@ export default function SearchPage({ sortOption }: SearchPageProps) {
   {
     /*setting states*/
   }
+  const [isloading, setisloading] = useState(false);
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
@@ -144,10 +145,11 @@ export default function SearchPage({ sortOption }: SearchPageProps) {
           products={products.products}
           isOpen={filtersOpen}
           onClose={() => setFiltersOpen(false)}
+          isloading={isloading}
         />
 
         {hasResults ? (
-          <ResultsGrid products={paginatedResults} />
+          <ResultsGrid products={paginatedResults} isloading={isloading} />
         ) : (
           <EmptyState query={query} />
         )}

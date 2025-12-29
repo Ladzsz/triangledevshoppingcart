@@ -6,6 +6,7 @@ import {
   getRatingSteps,
 } from "../utils/filterOptions";
 import "../assets/styles/filter.css";
+import { CircularProgress, Box } from '@mui/material';
 
 type FiltersPanelProps = {
   /* BRAND */
@@ -37,6 +38,9 @@ type FiltersPanelProps = {
   /* TogglePanel */
   isOpen: boolean;
   onClose: () => void;
+
+  /* Loading */
+  isloading: boolean;
 };
 
 export default function FiltersPanel({
@@ -59,6 +63,8 @@ export default function FiltersPanel({
 
   isOpen,
   onClose,
+
+  isloading,
 }: FiltersPanelProps) {
   const priceBounds = getPriceBounds(products);
   const sizes = getAvailableSizes(products);
@@ -66,7 +72,20 @@ export default function FiltersPanel({
   const ratings = getRatingSteps();
 
   return (
-    <aside className={`srp-filters ${isOpen ? "open" : ""}`}>
+
+    <Box position="relative">
+    {isloading && isOpen && (
+      <Box
+        position="absolute"
+        top="50%"
+        left="50%"
+        sx={{ transform: 'translate(-50%, -50%)', zIndex: 1 }}
+      >
+        <CircularProgress size={24} />
+      </Box>
+    )}
+
+<aside className={`srp-filters ${isOpen ? "open" : ""}`}>
       <div className="filter-top">
         <h2>Filters</h2>
 
@@ -173,5 +192,9 @@ export default function FiltersPanel({
         </label>
       </section>
     </aside>
+  
+</Box>
+        
+    
   );
 }
